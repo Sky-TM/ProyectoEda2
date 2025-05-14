@@ -40,7 +40,6 @@ exist = false;
 cout<<"Ingrese el Area a buscar y filtrar(E para salir): "<<endl;
 getline(cin, area_busc);
 area_busc = a_minusculas(borrar_espacios(quitar_tildes(area_busc)));
-cout<<"area a buscar: "<<area_busc<<endl;
 for(unsigned long i = 0; i < libros.size(); i++){
     string area_libro = a_minusculas(borrar_espacios(quitar_tildes(libros[i].get_area())));
     if(area_busc == a_minusculas(borrar_espacios(quitar_tildes(libros[i].get_area())))){
@@ -51,7 +50,7 @@ for(unsigned long i = 0; i < libros.size(); i++){
     //if(!exist){
 //cout<<"El Area no existe."<<endl;
     //}
-}while(/*!exist &&*/ area_busc != "E" && area_busc != "e");//si queremos seguir pidiendo ingreso hasta E.
+}while(/*!exist &&*/ area_busc != "E" && area_busc != "e");
     break;
 }
 case 3:{
