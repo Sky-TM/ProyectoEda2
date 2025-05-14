@@ -14,124 +14,96 @@ opcion = stoi(eleccion);
 switch(opcion){
 case 1:{
 bool band;
-string nombre_busc; 
-do{
-band = 0;
-cout<<"Ingrese el nombre del libro a buscar o E para salir: "<<endl;
+string nombre_busc;
 cin.ignore();
+do{
+
+band = 0;
+cout<<"Ingrese el nombre del libro a buscar(E para salir): "<<endl;
 getline(cin, nombre_busc);
-nombre_busc = a_minusculas(nombre_busc);
+nombre_busc = a_minusculas(quitar_tildes(nombre_busc));
 for(unsigned long i = 0; i<libros.size(); i++){
-    if(nombre_busc == a_minusculas(borrar_comillas(libros[i].get_nombre()))){
-        cout<<"--------------------"<<endl;
-        cout<<"Nombre: "<<libros[i].get_nombre()<<endl;
-        cout<<"Area: "<<libros[i].get_area()<<endl;
-        cout<<"Sub Area: "<<libros[i].get_sub_area()<<endl;
-        cout<<"Autores: "<<libros[i].get_autores()<<endl;
-        cout<<"Editorial:"<<libros[i].get_editorial()<<endl; 
-        cout<<"Anio de Publicacion: "<<libros[i].get_anio_P()<<endl;
+    if(borrar_espacios(nombre_busc) == borrar_espacios(a_minusculas(quitar_tildes(libros[i].get_nombre())))){
+        libros[i].mostrarLibro();
         band = 1;
     }
 }
-}while(!band && nombre_busc != "e");
+}while(!band && nombre_busc != "E" && nombre_busc != "e");
     break;
 }
 case 2:{
+string area_busc;
 bool exist;
 cin.ignore();
 do{
-string area_busc;
 exist = false;
-cout<<"Ingrese el Area a buscar y filtrar o E para salir: "<<endl;
+cout<<"Ingrese el Area a buscar y filtrar(E para salir): "<<endl;
 getline(cin, area_busc);
-cout << "Leí exactamente: '" << area_busc << "'\n";
-area_busc = a_minusculas(area_busc);
+area_busc = a_minusculas(borrar_espacios(quitar_tildes(area_busc)));
+cout<<"area a buscar: "<<area_busc<<endl;
 for(unsigned long i = 0; i < libros.size(); i++){
-    if(area_busc == a_minusculas(libros[i].get_area())){
-        cout<<"--------------------"<<endl;
-        cout<<"Nombre: "<<libros[i].get_nombre()<<endl;
-        cout<<"Area: "<<libros[i].get_area()<<endl;
-        cout<<"Sub Area: "<<libros[i].get_sub_area()<<endl;
-        cout<<"Autores: "<<libros[i].get_autores()<<endl;
-        cout<<"Editorial:"<<libros[i].get_editorial()<<endl; 
-        cout<<"Anio de Publicacion: "<<libros[i].get_anio_P()<<endl;
-        exist = true;
+    string area_libro = a_minusculas(borrar_espacios(quitar_tildes(libros[i].get_area())));
+    if(area_busc == a_minusculas(borrar_espacios(quitar_tildes(libros[i].get_area())))){
+        libros[i].mostrarLibro();
+        //exist = true;
     }
 }
-if(!exist){
-    cout<<"El Area no existe."<<endl;
-}
-}while(!exist);
+    //if(!exist){
+//cout<<"El Area no existe."<<endl;
+    //}
+}while(/*!exist &&*/ area_busc != "E" && area_busc != "e");//si queremos seguir pidiendo ingreso hasta E.
     break;
 }
 case 3:{
-string subarea_busc;
+cin.ignore();//limpiar buffer
 bool encontrado;
+string subarea_busc;
 do{
 encontrado = 0;
-cout<<"Ingrese el Sub Area a buscar y filtrar o E para salir: "<<endl;
-cin.ignore();//limpiar buffer
+cout<<"Ingrese el Sub Area a buscar y filtrar(E para salir): "<<endl;
 getline(cin, subarea_busc);
-subarea_busc = a_minusculas(subarea_busc);
+subarea_busc = quitar_tildes(subarea_busc);
 for(unsigned long i = 0; i < libros.size(); i++){
-    if(subarea_busc == a_minusculas(libros[i].get_sub_area())){
-        cout<<"--------------------"<<endl;
-        cout<<"Nombre: "<<libros[i].get_nombre()<<endl;
-        cout<<"Area: "<<libros[i].get_area()<<endl;
-        cout<<"Sub Area: "<<libros[i].get_sub_area()<<endl;
-        cout<<"Autores: "<<libros[i].get_autores()<<endl;
-        cout<<"Editorial:"<<libros[i].get_editorial()<<endl; 
-        cout<<"Anio de Publicacion: "<<libros[i].get_anio_P()<<endl;
+    if(a_minusculas(borrar_espacios(subarea_busc)) == a_minusculas(borrar_espacios(quitar_tildes(libros[i].get_sub_area())))){
+        libros[i].mostrarLibro();
         encontrado = 1;
     }
 }
 
-}while(!encontrado && subarea_busc != "e");
+}while(!encontrado && subarea_busc != "E" && subarea_busc != "e");
     break;
 }
 case 4:{
-string autor_busc;
 bool band;
+string autor_busc;
+cin.ignore();
 do{
 band = 0;
-cout<<"Ingrese el Autor a buscar o E para salir: "<<endl;
-cin.ignore();
+cout<<"Ingrese el Autor a buscar(E para salir): "<<endl;
 getline(cin, autor_busc);
-autor_busc = a_minusculas(autor_busc);
+autor_busc = quitar_tildes(autor_busc);
 for(unsigned long i = 0; i < libros.size(); i++){
-    if(autor_busc == a_minusculas(libros[i].get_autores())){
-        cout<<"--------------------"<<endl;
-        cout<<"Nombre: "<<libros[i].get_nombre()<<endl;
-        cout<<"Area: "<<libros[i].get_area()<<endl;
-        cout<<"Sub Area: "<<libros[i].get_sub_area()<<endl;
-        cout<<"Autores: "<<libros[i].get_autores()<<endl;
-        cout<<"Editorial:"<<libros[i].get_editorial()<<endl; 
-        cout<<"Anio de Publicacion: "<<libros[i].get_anio_P()<<endl;
+    if(a_minusculas(borrar_espacios(autor_busc)) == a_minusculas(borrar_espacios(quitar_tildes(libros[i].get_autores())))){
+        libros[i].mostrarLibro();
         band = 1;
     }
 }
 
-}while(!band && autor_busc != "e");
+}while(!band && autor_busc != "E" && autor_busc != "e");
     break;
 }
 case 5:{
 bool band;
+string edi_busc;
 cin.ignore();
 do{
 band = false;
-string edi_busc;
-cout<<"Ingrese la Editorial a buscar y filtrar: "<<endl;
+cout<<"Ingrese la Editorial a buscar y filtrar(E para salir): "<<endl;
 getline(cin, edi_busc);
-edi_busc = a_minusculas(edi_busc);
+edi_busc = a_minusculas(quitar_tildes(edi_busc));
 for(unsigned long i = 0; i < libros.size(); i++){
-    if(edi_busc == a_minusculas(libros[i].get_editorial())){
-        cout<<"--------------------"<<endl;
-        cout<<"Nombre: "<<libros[i].get_nombre()<<endl;
-        cout<<"Area: "<<libros[i].get_area()<<endl;
-        cout<<"Sub Area: "<<libros[i].get_sub_area()<<endl;
-        cout<<"Autores: "<<libros[i].get_autores()<<endl;
-        cout<<"Editorial:"<<libros[i].get_editorial()<<endl; 
-        cout<<"Anio de Publicacion: "<<libros[i].get_anio_P()<<endl;
+    if(borrar_espacios(edi_busc) == a_minusculas(borrar_espacios(quitar_tildes(libros[i].get_editorial())))){
+        libros[i].mostrarLibro();
         band = true;
     }
 }
@@ -140,12 +112,28 @@ for(unsigned long i = 0; i < libros.size(); i++){
         
     }
 
-}while(!band);
+}while(!band && edi_busc != "E" && edi_busc != "e");
     break;
 }
 case 6:{
+string anio_busc;
+bool band;
+do{
+cout<<"Ingrese el Año de Publicacion a buscar(E para salir): "<<endl;
+cin>>anio_busc;
+cout<<"Libros del año "<<anio_busc<<endl;
+
+for(size_t i = 0;i < libros.size(); i++){
+    if(borrar_espacios(anio_busc) == borrar_espacios(libros[i].get_anio_P())){
+        libros[i].mostrarLibro();
+        band = true;
+    }
+}
+}while(!band && anio_busc != "E" && anio_busc != "e");
+
     break;
 }
+
 case 7:{
 
 }
