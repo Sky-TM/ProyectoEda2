@@ -2,10 +2,16 @@
 #include<string>
 #include<fstream>
 #include<vector>
-
-#include "funcionesH.h"
+#include "buscar_libros.h"
+#include "buscar_socios.h"
+#include "func.h"
+#include "funciones2.h"
 #include "socioH.h"
 #include "libroH.h"
+#include "cargar_libros.h"
+#include "cargar_socios.h"
+#define ARCHIVO_SOCIOS "lista de socios.csv"
+#define ARCHIVO_LIBROS "lista_libros.csv"
 
 using namespace std;
 
@@ -18,6 +24,7 @@ int main()
     int contRepe = 1;
 
     vector < socio > vector_Socio;/// VECTOR DINAMICO TIPOS SOCIO
+    vector<libro> vector_Libros = cargarLibro(ARCHIVO_LIBROS);
 
     fstream file;///SIRVE PARA ACCEDER A LOS ARCHIVOS
 
@@ -49,12 +56,13 @@ int main()
 
                 ///TOMA LOS DATOS DEL ARCHIVO Y CIERRA ARCHIVO
                 lecturaLinea(vector_Socio, file);
+                //cargarSocio(ARCHIVO_SOCIOS);
                 contRepe++;
             }
 
             ///ABRIMOS EL ARCHIVO Y TOMAMOS SUS DATOS PARA VOLVARLO EN EL VECTOR
             cout<< "1-MODIFICAR SOCIO    2-ELIMINAR SOCIO ( BAJA ) "
-                << "3-SUBIR CAMBIOS( ALTA )   4-VER SOCIOS  "<<endl
+                << "3-SUBIR CAMBIOS( ALTA )   4-VER SOCIOS  5-BUSCAR SOCIO "<<endl
                 << ">>  ";
             cin >> opcionMenu2;
             ///IGNORAMOS EL SALTO DE LINEA
@@ -73,13 +81,18 @@ int main()
             }else if(opcionMenu2 == 4){
                 mostrar(vector_Socio);
 
-            }else{
-                cout<< "OPCION INCORRECTE"<< endl;
+            }else if(opcionMenu2 == 5){
+                busqueda_socios(vector_Socio);
+            }
+            else{
+                cout<< "OPCION INCORRECTA"<< endl;
             }
 
             break;
 
         case 2 :
+            cout<<"Buscar libro."<<endl;//unica opcion por ahora
+            busqueda_libros(vector_Libros);
             break;
 
         case 3 :

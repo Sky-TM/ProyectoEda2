@@ -28,6 +28,16 @@ public :
     int validar(string);///SIRVE PARA LA BUSQUEDA DEL SOCIO
     string stringFile();///CONVIERTE LOS ATRIBUTOS A UN STRING
     void mostrar();
+    void mostrarSocio();
+    //getters
+    string getapll();
+    string getdni();
+    string getsex();
+    string getdir();
+    string getnum();
+    string getedad();
+    string getfechaN();
+    string getmail();
 
 };
 

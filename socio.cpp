@@ -4,10 +4,46 @@
 #include<vector>
 
 #include "socioH.h"
-#include "funcionesH.h"
+#include "funciones2.h"
 #include "libroH.h"
-
+#include "func.h"
 using namespace std;
+// getters
+string socio::getapll() { 
+    return apellido;
+ }
+string socio::getdni() { 
+    return dni; 
+}
+string socio::getsex() { 
+    return sexo; 
+}
+string socio::getdir() {
+     return direccion;
+     }
+string socio::getnum() {
+     return num_telefonico;
+     }
+string socio::getedad() {
+     return edad; 
+    }
+string socio::getfechaN() {
+     return fechaN;
+     }
+string socio::getmail() { 
+    return mail; 
+}
+void socio::mostrarSocio(){
+    cout<<"--------------------"<<endl; //aplicamos quitar_tildes porque sino el cout no funciona bien para los caracteres con tilde
+    cout<<"Apellido: "<<quitar_tildes(apellido)<<endl;
+    cout<<"DNI: "<<quitar_tildes(dni)<<endl;
+    cout<<"Sexo: "<<quitar_tildes(sexo)<<endl;
+    cout<<"Direccion: "<<quitar_tildes(direccion)<<endl;
+    cout<<"Numero: "<<quitar_tildes(num_telefonico)<<endl;
+    cout<<"Edad: "<<quitar_tildes(edad)<<endl;
+    cout<<"Fecha de Nacimiento: "<<quitar_tildes(fechaN)<<endl;
+    cout<<"Email: "<<quitar_tildes(mail)<<endl;
+}
 
 string socio::stringFile(){
 
@@ -104,11 +140,6 @@ socio::socio(string _apellido, string _dni, string _genero, string _direccion, s
     mail = _mail;
     posicionDato = _posicionA;
 }
-
-
-socio::socio(){
-}
-
 
 socio::~socio(){
 
