@@ -114,13 +114,14 @@ num_busc = borrar_espacios(borrar_comillas(num_busc));
     break;
     case 6:{
 string entrada;
+int opcion = 0;
 do{
 cout<<"Ingrese una opcion de busqueda de edad(E para salir): "<<endl;
 cout<<"1.Mayores a 18.\t 2.Mayores a 30.\t 3.Mayores a 60.\t 4.Edad Especifica.\n"<<endl;
 cin>>entrada; //almacenamos un string para evitar overflow si fuera un int
 }while(entrada != "1" && entrada != "2" && entrada != "3" && entrada != "4" && entrada != "e" && entrada != "E"); //mientras no sea la correcta
 if(entrada != "E" && entrada != "e"){
-int opcion = stoi(entrada);// simplemente hacemos un string to int de la cadena 
+ opcion = stoi(entrada);// simplemente hacemos un string to int de la cadena 
 }else{
     opcion = 5 ; 
 }
