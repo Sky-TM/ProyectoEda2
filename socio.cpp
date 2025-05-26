@@ -1,13 +1,45 @@
-#include<iostream>
-#include<string>
-#include<fstream>
-#include<vector>
-
-#include "socioH.h"
-#include "funcionesH.h"
-#include "libroH.h"
+#include "socioH.h"///DONDE ESTA LA CLASE SOCIO
 
 using namespace std;
+
+// getters
+string socio::getapll() {
+    return apellido;
+ }
+string socio::getdni() {
+    return dni;
+}
+string socio::getsex() {
+    return sexo;
+}
+string socio::getdir() {
+     return direccion;
+     }
+string socio::getnum() {
+     return num_telefonico;
+     }
+string socio::getedad() {
+     return edad;
+    }
+string socio::getfechaN() {
+     return fechaN;
+     }
+string socio::getmail() {
+    return mail;
+}
+
+void socio::mostrarSocio(){
+    cout<<"--------------------"<<endl; //aplicamos quitar_tildes porque sino el cout no funciona bien para los caracteres con tilde
+    cout<<"Apellido: "<<apellido <<endl;
+    cout<<"DNI: "<<dni <<endl;
+    cout<<"Sexo: "<<sexo <<endl;
+    cout<<"Direccion: "<<direccion <<endl;
+    cout<<"Numero: "<<num_telefonico <<endl;
+    cout<<"Edad: "<<edad <<endl;
+    cout<<"Fecha de Nacimiento: "<<fechaN <<endl;
+    cout<<"Email: "<<mail <<endl;
+     cout<<"--------------------"<<endl;
+}
 
 string socio::stringFile(){
 
@@ -105,10 +137,8 @@ socio::socio(string _apellido, string _dni, string _genero, string _direccion, s
     posicionDato = _posicionA;
 }
 
-
 socio::socio(){
 }
-
 
 socio::~socio(){
 
@@ -117,12 +147,4 @@ socio::~socio(){
     ///VER COMO SOLUCIONAR ESO
 
     //cout<< "llamada a destructor"<< endl;
-}
-
-
-void socio::mostrar(){
-
-    cout<< apellido<< " "<< dni<< " "<< sexo<< "  "
-            << direccion<< " "<< num_telefonico<< "  "<< edad<< "  "
-            << fechaN<< "  "<< mail<< "  pos: "<< posicionDato<< endl;
 }

@@ -1,13 +1,49 @@
-#include<iostream>
-#include<string>
-#include<fstream>
-#include<vector>
-
 #include "libroH.h"
-#include "socioH.h"
-#include "funcionesH.h"
 
 using namespace std;
+//constructor
+libro::libro(string n, string a , string s, string aut, string edi, string ani){
+    nombre = n;
+    area = a;
+    sub_area = s;
+    autores = aut;
+    editorial = edi;
+    anio_P = ani;
+}
+//getters
+string libro::get_nombre() {
+    return nombre;
+}
+
+string libro::get_area() {
+    return area;
+}
+
+string libro::get_sub_area() {
+    return sub_area;
+}
+
+string libro::get_autores()  {
+    return autores;
+}
+
+string libro::get_editorial()  {
+    return editorial;
+}
+
+string libro::get_anio_P()  {
+    return anio_P;
+}
+
+void libro:: mostrarLibro(){
+        cout<<"--------------------"<<endl;
+        cout<<"Nombre: "<<quitar_tildes(nombre)<<endl;
+        cout<<"Area: "<<quitar_tildes(area)<<endl;
+        cout<<"Sub Area: "<<quitar_tildes(sub_area)<<endl;
+        cout<<"Autores: "<<quitar_tildes(autores)<<endl;
+        cout<<"Editorial:"<<quitar_tildes(editorial)<<endl;
+        cout<<"Anio de Publicacion: "<<quitar_tildes(anio_P)<<endl;
+}
 
 void libro::generar_barras(){
 

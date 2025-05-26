@@ -3,8 +3,8 @@
 
 #include<iostream>
 #include<string>
-#include<fstream>
-#include<vector>
+
+#include "funcionesMain.h"
 
 using namespace std;
 
@@ -22,9 +22,18 @@ class libro{
     bool estadoSN;//1 ( DISPONIBLE ) / 0 ( NO DISPONIBLE )
 
 public :
-    libro(string, string, string, string, string, string, string);
-    ~libro();
+    libro(string, string, string, string, string, string);
+    //~libro();
     void generar_barras();
+    void mostrarLibro();
+
+    //getters
+    string get_nombre();
+    string get_area() ;
+    string get_sub_area();
+    string get_autores() ;
+    string get_editorial();
+    string get_anio_P();
 
 };
 
